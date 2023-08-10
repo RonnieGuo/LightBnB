@@ -22,7 +22,7 @@ const getUserWithEmail = function (email) {
   let resolvedUser = null;
   for (const userId in users) {
     const user = users[userId];
-    if (user?.email.toLowerCase() === email?.toLowerCase()) {
+    if (user && user.email.toLowerCase() === email.toLowerCase()) {
       resolvedUser = user;
     }
   }
@@ -61,18 +61,6 @@ const getAllReservations = function (guest_id, limit = 10) {
   return getAllProperties(null, 2);
 };
 
-/// Properties
-const getAllProperties = (options, limit = 10) => {
-  return pool
-    .query(`SELECT * FROM properties LIMIT $1`, [limit])
-    .then((result) => {
-      console.log(result.rows);
-      return result.rows;
-    })
-    .catch((err) => {
-      console.log(err.message);
-    });
-};
 /**
  * Get all properties.
  * @param {{}} options An object containing query options.
@@ -86,7 +74,18 @@ const getAllProperties = (options, limit = 10) => {
 //   }
 //   return Promise.resolve(limitedProperties);
 // };
-
+/// Refactor Get all properties function
+const getAllProperties = (options, limit = 10) => {
+  return pool
+    .query(`SELECT * FROM properties LIMIT $1`, [limit])
+    .then((result) => {
+      console.log(result.rows);
+      return result.rows;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
 /**
  * Add a property to the database
  * @param {{}} property An object containing all of the property details.
