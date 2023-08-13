@@ -1,4 +1,12 @@
-# LightBnB
+# LightBnB Project
+A simple multi-page Airbnb project that uses a server-side javascript to display the information from queries to web page via SQL queries.
+
+## Getting Started
+1. Clone the repository onto your local device.
+2. Install dependencies using the `npm i` command.
+3. Connect to the database using `node-postgres`.
+4. Start the web server using the `npm run local` command. You may need to have `npx` installed first `npm install -g npx`.
+5. Go to http://localhost:3000/ in your browser.
 
 ## Project Structure
 
@@ -53,3 +61,4 @@
 * `routes` contains the router files which are responsible for any HTTP requests to `/users/something` or `/api/something`. 
 * `styles` contains all of the sass files. 
 * `server.js` is the entry point to the application. This connects the routes to the database.
+
